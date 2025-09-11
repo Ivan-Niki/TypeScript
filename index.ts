@@ -23,5 +23,14 @@ const f2 = (a: number, b: string, c: boolean): string => {
     return 'hello world'
 }
 
+type User = {
+    name: string;
+    age: number;
+    car: { color: string };
+};
+
+
+
 
 // типизация объектов
+const obj: { name: string; age: number; car: { color: string } } = { name: 'Alex', age: 20, car: { color: 'red' } }
