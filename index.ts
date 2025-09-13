@@ -29,8 +29,21 @@ type User = {
     car: { color: string };
 };
 
-
+interface User2 {
+    name: string;
+    age: number;
+    car: { color: string };
+};
 
 
 // типизация объектов
-const obj: { name: string; age: number; car: { color: string } } = { name: 'Alex', age: 20, car: { color: 'red' } }
+const obj: User = { name: 'Alex', age: 20, car: { color: 'red' } }
+
+
+// --------- Union types (объединение типов) -----------
+let result: number | string;
+
+result = 10;
+result = "Success";
+// result = false;  -- TS не позволит присвоить значение false
+
