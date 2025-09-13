@@ -60,21 +60,60 @@ const example: [string, string, number][] = [  // в типах указывае
 
 
 
-// type User = {
-//     name: string;
-//     age: number;
-//     car: { color: string };
-// };
 
-// interface User2 {
-//     name: string;
-//     age: number;
-//     car: { color: string };
-// };
+
+
 
 
 // ------------------ Типизация объектов ---------------------
-const obj: User = { name: 'Alex', age: 20, car: { color: 'red' } }
+// const obj: User = { name: 'Alex', age: 20, car: { color: 'red' } }
+
+const obj: { a: number; b: number; c: string; } = {
+    a: 1,
+    b: 2,
+    c: 'sdsd'
+}
+
+// типизацию объектов удобнее задавать через псевдонимы типов:
+type MyObj = {
+    a: number;
+    b: number;
+    c: string;
+}
+
+const obj2: MyObj = {
+    a: 123,
+    b: 345,
+    c: "Hello",
+}
+
+// Описание объекта можно сделать при помощи псевдонимов типов или при помощи интерфейсов:
+// Псевдонимы типов:
+type User = {
+    name: string;
+    age: number;
+    car: { color: string };
+};
+
+const userIvan: User = {
+    name: 'Ivan',
+    age: 35,
+    car: { color: 'brown' },
+    // hasPets: true -- выдаст ошибку
+}
+
+// Интерфейсы:
+interface IUser2 {
+    name: string;
+    age: number;
+    car: { color: string };
+};
+
+const userAlex: IUser2 = {
+    name: 'Alex',
+    age: 32,
+    car: { color: 'green' }
+}
 
 
 // ----------------- Union types (объединение типов) ------------------
