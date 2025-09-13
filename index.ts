@@ -23,24 +23,61 @@ const f2 = (a: number, b: string, c: boolean): string => {
     return 'hello world'
 }
 
-type User = {
-    name: string;
-    age: number;
-    car: { color: string };
-};
 
-interface User2 {
-    name: string;
-    age: number;
-    car: { color: string };
-};
+// ------------------ Типизация массивов ---------------------
+// ------- списки -------
+const arr: string[] = ['a', 'b', 'c'];
+// arr.push(2);  -- TS выдаст ошибку, так как мы указали тип "массив строк"
+const arr1: number[] = [];
+const arr2: Array<number> = [1, 2, 3, 4, 5];
+
+// создание вложенных массивов:
+const arr3: string[][] = [];
+arr3.push(['a', 'b', 'c']);
+// arr3.push([1, 2, 3]); -- TS выдаст ошибку
+
+// Для хранения в массиве разных типов данных:
+const arr4: (string | number)[] = [];
+arr4.push('hello', 23);
+console.log(arr4);
+
+// Также это можно сделать с использованием псевдонима типа
+type MyArray = (string | number);
+const arr5: MyArray[] = [];
+arr5.push(12, "TS", "JS");
+console.log(arr5);
+
+// ------------ кортежи (tuple) ------------
+// Кортеж имеет фиксированное количество элементов
+const tuple1: [string, boolean, number] = ["abc", true, 0];
+
+// csv
+const example: [string, string, number][] = [  // в типах указываем, что ожидаем массив кортежей
+    ['str', 'st', 32]
+]
 
 
-// типизация объектов
+
+
+
+// type User = {
+//     name: string;
+//     age: number;
+//     car: { color: string };
+// };
+
+// interface User2 {
+//     name: string;
+//     age: number;
+//     car: { color: string };
+// };
+
+
+// ------------------ Типизация объектов ---------------------
 const obj: User = { name: 'Alex', age: 20, car: { color: 'red' } }
 
 
-// --------- Union types (объединение типов) -----------
+// ----------------- Union types (объединение типов) ------------------
 let result: number | string;
 result = 10;
 result = "Success";
