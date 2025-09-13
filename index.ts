@@ -115,6 +115,22 @@ const userAlex: IUser2 = {
     car: { color: 'green' }
 }
 
+// создание опционального параметра (ключа)
+interface IUser3 {
+    name: string;
+    age: number;
+    hasPets: boolean;
+    car?: { color: string };  // ключ car является необязательным (может отсутствовать)
+};
+
+const userAndrew: IUser3 = {
+    name: 'Andrew',
+    age: 27,
+    hasPets: true,
+    // car: { color: 'gray' } -- данный параметр может отсутствовать в объекте (необязательный)
+}
+console.log('Andrew:', userAndrew);
+
 
 // ----------------- Union types (объединение типов) ------------------
 let result: number | string;
