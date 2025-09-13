@@ -100,3 +100,24 @@ enum MixedEnum {
 }
 
 console.log(Direction[0]);
+
+
+// ------------------ Any и unknown -------------------
+// any
+const anyValue: any = "this is a string";
+const strLength: number = anyValue.length;
+
+console.log(strLength);
+
+// unknown
+let value: unknown;
+
+value = 10;
+value = true;
+value = "hello";
+
+
+if (typeof value === "string") {
+    console.log(value.toUpperCase());
+}
+
