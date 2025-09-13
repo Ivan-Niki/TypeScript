@@ -46,4 +46,11 @@ let result: number | string;
 result = 10;
 result = "Success";
 // result = false;  -- TS не позволит присвоить значение false
+// result = []; -- TS не позволит присвоить значение []
 
+function printResult(value: number | string) {
+    console.log(`Result: ${value}`);
+}
+
+printResult(15)
+printResult('Hello')
