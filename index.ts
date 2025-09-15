@@ -132,6 +132,27 @@ const userAndrew: IUser3 = {
 console.log('Andrew:', userAndrew);
 
 
+// создание параметра (ключа) только для чтения:
+interface IUser4 {
+    readonly name: string;
+    age: number;
+    hasPets: boolean;
+    car?: { color: string };  // ключ car является необязательным (может отсутствовать)
+};
+
+const userDmitry: IUser4 = {
+    name: 'Dmitry',
+    age: 27,
+    hasPets: false,
+    car: { color: 'gray' } // -- данный параметр может отсутствовать в объекте (необязательный)
+}
+
+// userDmitry.name = 'John'; -- TS выдаст ошибку (ключ name является read-only ключом)
+userDmitry.age = 32;
+console.log('userDmitry-obj:', userDmitry);
+
+
+
 // ----------------- Union types (объединение типов) ------------------
 let result: number | string;
 result = 10;
