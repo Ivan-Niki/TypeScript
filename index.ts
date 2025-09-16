@@ -58,13 +58,6 @@ const example: [string, string, number][] = [  // в типах указывае
 
 
 
-
-
-
-
-
-
-
 // ------------------ Типизация объектов ---------------------
 // const obj: User = { name: 'Alex', age: 20, car: { color: 'red' } }
 
@@ -88,7 +81,8 @@ const obj2: MyObj = {
 }
 
 // Описание объекта можно сделать при помощи псевдонимов типов или при помощи интерфейсов:
-// Псевдонимы типов:
+
+// ---------- Псевдонимы типов: -----------
 type User = {
     name: string;
     age: number;
@@ -102,7 +96,7 @@ const userIvan: User = {
     // hasPets: true -- выдаст ошибку
 }
 
-// Интерфейсы:
+// ------------ Интерфейсы: --------------
 interface IUser2 {
     name: string;
     age: number;
@@ -177,7 +171,35 @@ const userMichail: IUser5 = {
 console.log('userMichail:', userMichail);
 
 
-// ----------------- Union types (объединение типов) ------------------
+// ---------- Объединение интерфейсов ----------
+interface IPerson {
+    name: string;
+    age: number;
+}
+interface IAccount {
+    email: string;
+    login: string;
+    active: boolean;
+}
+
+interface IDeveloper extends IPerson, IAccount {
+    skills: string[];
+    level?: string;
+}
+/* Созданный выше интерфейс IDeveloper будет содержать все ключи интерфейса IPerson и 
+все ключи интерфейса IAccount, а также будет содержать ключи skills и level */
+
+const developerNick: IDeveloper = {
+    name: 'Nick',
+    age: 32,
+    email: 'nickdev@gmail.com',
+    login: 'dfpij',
+    active: true,
+    skills: ['JS', 'TS', 'Playwright']
+}
+
+
+// ----------------- Union types (объединение нескольких типов) ------------------
 let result: number | string;
 result = 10;
 result = "Success";
