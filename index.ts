@@ -157,20 +157,24 @@ interface IUser5 {
     readonly name: string;
     age: number;
     hasPets: boolean;
-    car?: { color: string };
-    // [key: string]: string | number;
+    [key: string]: string | number | boolean;
 };
 
 const userMichail: IUser5 = {
     name: 'Michail',
     age: 25,
     hasPets: true,
-    car: { color: 'gray' },
+    /* и далее мы можем сколько угодно добавлять параметров, удовлетворяющих 
+    описанному нами типу в интерфейсе ( [key: string]: string | number | boolean ):    */
     sex: 'male',
     weight: 85,
+    hasChildren: false,
+    height: 184,
+    eyesColor: 'blue',
+    favoriteDish: 'pizza',
 }
 
-console.log(userMichail);
+console.log('userMichail:', userMichail);
 
 
 // ----------------- Union types (объединение типов) ------------------
