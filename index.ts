@@ -134,7 +134,7 @@ console.log('Andrew:', userAndrew);
 
 // создание параметра (ключа) только для чтения:
 interface IUser4 {
-    readonly name: string;
+    readonly name: string;  // ключ name нельзя будет изменить, т.к. он является read-only параметром
     age: number;
     hasPets: boolean;
     car?: { color: string };  // ключ car является необязательным (может отсутствовать)
@@ -151,6 +151,26 @@ const userDmitry: IUser4 = {
 userDmitry.age = 32;
 console.log('userDmitry-obj:', userDmitry);
 
+
+// Добавление дополнительного набора ключей к фиксированному набору коючей:
+interface IUser5 {
+    readonly name: string;
+    age: number;
+    hasPets: boolean;
+    car?: { color: string };
+    // [key: string]: string | number;
+};
+
+const userMichail: IUser5 = {
+    name: 'Michail',
+    age: 25,
+    hasPets: true,
+    car: { color: 'gray' },
+    sex: 'male',
+    weight: 85,
+}
+
+console.log(userMichail);
 
 
 // ----------------- Union types (объединение типов) ------------------
