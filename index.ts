@@ -198,6 +198,30 @@ const developerNick: IDeveloper = {
     skills: ['JS', 'TS', 'Playwright']
 }
 
+// ------------ Объединение псевдонимов типов (type alias) ------------
+type Person = {
+    name: string;
+    age: number;
+}
+
+type Account {
+    email: string;
+    login: string;
+    active: boolean;
+}
+
+type Developer = {
+    skills: string[];
+    level?: string;
+}
+
+type FrontendDeveloper = Person & Account & Developer;
+
+// создадим массив разработчиков: 
+const devArr: FrontendDeveloper[] = [];
+
+
+
 
 // ----------------- Union types (объединение нескольких типов) ------------------
 let result: number | string;
@@ -279,4 +303,8 @@ value = "hello";
 if (typeof value === "string") {
     console.log(value.toUpperCase());
 }
+
+
+
+// ============================ Generics (универсальные типы) ===============================
 
