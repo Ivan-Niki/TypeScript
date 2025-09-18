@@ -204,7 +204,7 @@ type Person = {
     age: number;
 }
 
-type Account {
+type Account = {
     email: string;
     login: string;
     active: boolean;
@@ -219,7 +219,7 @@ type FrontendDeveloper = Person & Account & Developer;
 
 // создадим массив разработчиков: 
 const devArr: FrontendDeveloper[] = [];
-
+console.log(devArr);
 
 
 
@@ -303,6 +303,16 @@ value = "hello";
 if (typeof value === "string") {
     console.log(value.toUpperCase());
 }
+
+// ============================ Типизация функций ===============================
+
+const fn1 = (num: number): string => {
+    return String(num);
+}
+
+console.log(fn1(23), typeof fn1(23));
+
+
 
 
 
