@@ -304,6 +304,7 @@ if (typeof value === "string") {
     console.log(value.toUpperCase());
 }
 
+
 // ============================ Типизация функций ===============================
 
 const fn1 = (num: number): string => {
@@ -324,6 +325,15 @@ function fn3(cb?: Callback) {
     cb(12)
 }
 
+function createPoint(x: number = 0, y: number = 0): [number, number] {
+    return [x, y]
+}
+console.log(createPoint(10));
+
+function fn4(...nums: number[]): string {
+    return nums.join('-')
+}
+console.log(fn4(3, 4, 5, 6, 7, 8));
 
 
 
@@ -345,7 +355,7 @@ function fn3(cb?: Callback) {
 // Ниже приведён пример того, как написать функцию, которая возвращает первый элемент массива array.
 // Вот пример функции возвращающей первый элемент массива в TypeScript с использованием дженериков:
 
-function firstElement<T>(arr: T[]): T {
+function firstElement<T>(arr: T[]): T | undefined {
     return arr[0];
 }
 
