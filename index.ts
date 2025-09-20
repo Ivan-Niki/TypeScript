@@ -313,8 +313,16 @@ const fn1 = (num: number): string => {
 console.log(fn1(23), typeof fn1(23));
 
 // ------------- Функции с коллбэком в параметрах ------------
-type Callback = () => string;
+type Callback = (num: number) => string;
 function fn2(cb: Callback) { }
+
+// ----- Если коллбэк в параметрах функции не обязательный -----
+function fn3(cb?: Callback) {
+    if (cb === undefined) {
+        cb = String;
+    }
+    cb(12)
+}
 
 
 
