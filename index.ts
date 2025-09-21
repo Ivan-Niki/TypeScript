@@ -335,6 +335,31 @@ function fn4(...nums: number[]): string {
 }
 console.log(fn4(3, 4, 5, 6, 7, 8));
 
+interface Printable {
+    label: string;
+}
+
+// -------- Работа с объектами в качестве параметров функции ---------
+function printReport(obj: Printable): void {
+    console.log(obj.label);
+}
+
+const drink = {
+    label: 'pepsi',
+    price: 90,
+}
+
+const phone = {
+    label: 'Huawei P10',
+    category: 'smartphone',
+}
+
+printReport(drink);    // TS отработает нормально
+printReport(phone);    // TS отработает нормально
+printReport({ label: '', price: 100 })   // TS выдаст ошибку
+
+
+
 
 
 
