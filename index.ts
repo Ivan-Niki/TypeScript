@@ -356,11 +356,14 @@ const phone = {
 
 printReport(drink);    // TS отработает нормально
 printReport(phone);    // TS отработает нормально
-printReport({ label: '', price: 100 })   // TS выдаст ошибку
+// printReport({ label: '', price: 100 })   // TS выдаст ошибку
 
 
+/*
+function pickCard(x: number | { suit: string; card: number }[]): {
 
-
+}
+*/
 
 
 // ============================ Generics (универсальные типы) ===============================
@@ -394,10 +397,17 @@ const firstNumber = firstElement<number>(numbers);
 console.log(firstNumber); // 1
 
 
+// Напишем функцию, которая будет возвращать случайный элемент массива
+function getRandomElement<T>(items: T[]): T | undefined {
+    const randomIndex = Math.floor(Math.random() * items.length);
 
+    return items[randomIndex];
+}
 
-// function identity(arg) {
-//     return arg;
-// }
+const el1 = getRandomElement([1, 2, 3, 4, 5, 6, 7, 8])
+const el2 = getRandomElement(['a', 'b', 'c', 'd', 'e', 'f'])
+const el3 = getRandomElement(['a', 'b', 'c', 'd', 5, 6, 7, 8])
 
-
+console.log('getRandomElement --- el1 ===', el1);
+console.log('getRandomElement --- el2 ===', el2);
+console.log('getRandomElement --- el3 ===', el3);
