@@ -411,3 +411,14 @@ const el3 = getRandomElement(['a', 'b', 'c', 'd', 5, 6, 7, 8])
 console.log('getRandomElement --- el1 ===', el1);
 console.log('getRandomElement --- el2 ===', el2);
 console.log('getRandomElement --- el3 ===', el3);
+
+// Напишем функцию, которая принимает два объекта и возвращает смёрженный объект
+function merge<U, V>(o1: U, o2: V): U & V {
+    return {
+        ...o1,
+        ...o2
+    }
+}
+
+const r1 = merge({a: 1}, {b: 2});
+const r2 = merge({ a: 1, c: 'hello' }, { b: 2 });
