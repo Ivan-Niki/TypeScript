@@ -412,7 +412,8 @@ console.log('getRandomElement --- el1 ===', el1);
 console.log('getRandomElement --- el2 ===', el2);
 console.log('getRandomElement --- el3 ===', el3);
 
-// Напишем функцию, которая принимает два объекта и возвращает смёрженный объект
+
+// ------- Напишем функцию, которая принимает два объекта и возвращает смёрженный объект -------
 function mergeObjects<U, V>(obj1: U, obj2: V): U & V {
     return { ...obj1, ...obj2 }
 }
@@ -424,3 +425,20 @@ const result2 = mergeObjects({ id: 2, name: 'Alex' }, "unexpected data");
 console.log(result2); // <-- Логическая ошибка, но TypeScript пропустит.
 
 
+// Напишем такую же функцию (с использованием ограничения extends)
+
+function mergeObjects2<U extends object, V extends object>(
+    obj1: U,
+    obj2: V
+): U & V {
+    return { ...obj1, ...obj2 }
+}
+
+// Корректные примеры
+const user1 = { name: 'Alice', id: 1 };
+const meta = { age: 30, active: true };
+
+const merged = mergeObjects2(user1, meta);
+console.log(merged); // { name: 'Alice', id: 1, age: 30, active: true }
+
+// Некорректные примеры теперь вызывают ошибку
