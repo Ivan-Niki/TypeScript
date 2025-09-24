@@ -413,12 +413,14 @@ console.log('getRandomElement --- el2 ===', el2);
 console.log('getRandomElement --- el3 ===', el3);
 
 // Напишем функцию, которая принимает два объекта и возвращает смёрженный объект
-function merge<U, V>(o1: U, o2: V): U & V {
-    return {
-        ...o1,
-        ...o2
-    }
+function mergeObjects<U, V>(obj1: U, obj2: V): U & V {
+    return { ...obj1, ...obj2 }
 }
 
-const r1 = merge({a: 1}, {b: 2});
-const r2 = merge({ a: 1, c: 'hello' }, { b: 2 });
+const result1 = mergeObjects({ name: 'Alice' }, { age: 30 });
+console.log(result1); // { name: 'Alice', age: 30 }
+
+const result2 = mergeObjects({ id: 2, name: 'Alex' }, "unexpected data");
+console.log(result2); // <-- Логическая ошибка, но TypeScript пропустит.
+
+
