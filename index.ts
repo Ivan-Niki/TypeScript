@@ -441,4 +441,7 @@ const meta = { age: 30, active: true };
 const merged = mergeObjects2(user1, meta);
 console.log(merged); // { name: 'Alice', id: 1, age: 30, active: true }
 
+
 // Некорректные примеры теперь вызывают ошибку
+const invalid = mergeObjects2(user1, "invalid"); // Ошибка: строка не является объектом
+
