@@ -453,3 +453,15 @@ function getValueByKey<T, K extends keyof T>(obj: T, key: K): T[K] {
     return obj[key]
 }
 
+const user = {
+    id: 1,
+    name: "Alice",
+    age: 25,
+    isStudent: false
+}
+
+const userId = getValueByKey(user, "id");
+console.log("userId:", userId);
+
+// const userId = getValueByKey(user, "address"); --- TS выдаст ошибку, так как
+// свойства address нет в передаваемом объекте
