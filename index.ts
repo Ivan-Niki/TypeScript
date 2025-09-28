@@ -442,6 +442,14 @@ const merged = mergeObjects2(user1, meta);
 console.log(merged); // { name: 'Alice', id: 1, age: 30, active: true }
 
 
-// Некорректные примеры теперь вызывают ошибку
-const invalid = mergeObjects2(user1, "invalid"); // Ошибка: строка не является объектом
+// Некорректные примеры теперь вызывают ошибку:
+// const invalid = mergeObjects2(user1, "invalid"); // Ошибка: строка не является объектом
+
+
+
+// Функция, которая возвращает значение из объекта по его ключу
+// Нам здесь важно ограничить разработчика тем, что мы можем передать вторым параметром только тот ключ, который есть у объекта, передаваемого первым параметром
+function getValueByKey<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key]
+}
 
