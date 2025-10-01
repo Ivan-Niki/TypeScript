@@ -467,7 +467,7 @@ console.log("userId:", userId);
 // свойства address нет в передаваемом объекте
 
 // ----- Условные типы ------
-function convert<T>(value: T) {
+function convert<T>(value: T): T extends number ? string : number {
     if (typeof value === "number") {
         return value.toString(); // Преобразуем число в строку
     } else {
@@ -475,3 +475,9 @@ function convert<T>(value: T) {
     }
 }
 
+// Примеры использования:
+const result3 = convert(123); // Тип: string
+console.log(result3);
+
+const result4 = convert("Hello"); // Тип: number
+console.log(result4); 
