@@ -465,3 +465,13 @@ console.log("userId:", userId);
 
 // const userId = getValueByKey(user, "address"); --- TS выдаст ошибку, так как
 // свойства address нет в передаваемом объекте
+
+// ----- Условные типы ------
+function convert<T>(value: T) {
+    if (typeof value === "number") {
+        return value.toString(); // Преобразуем число в строку
+    } else {
+        return 0; // Если передана строка, возвращаем 0
+    }
+}
+
