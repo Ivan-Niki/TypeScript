@@ -469,15 +469,15 @@ console.log("userId:", userId);
 // ----- Условные типы ------
 function convert<T>(value: T): T extends number ? string : number {
     if (typeof value === "number") {
-        return value.toString(); // Преобразуем число в строку
+        return value.toString() as T extends number ? string : number; // Преобразуем число в строку
     } else {
-        return 0; // Если передана строка, возвращаем 0
+        return 0 as T extends number ? string : number; // Если передана строка, возвращаем 0
     }
 }
 
 // Примеры использования:
 const result3 = convert(123); // Тип: string
-console.log(result3);
+console.log(result3); // 123
 
 const result4 = convert("Hello"); // Тип: number
-console.log(result4); 
+console.log(result4); // 0
